@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shagun! 🌟</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            overflow-x: hidden;
+        }
+
+        .handwritten {
+            font-family: 'Caveat', cursive;
+        }
+
+        /* Custom Keyframes for interactive elements */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 25px rgba(244, 63, 94, 0.8);
+            }
+        }
+
+        .glow-btn {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Heart sparkle animation */
+        @keyframes sparkle {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .sparkler {
+            animation: sparkle 1s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-between relative bg-rose-50 select-none">
+
+    <!-- Confetti layer -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Top Navigation / Status Header -->
+    <header class="w-full max-w-md mx-auto p-4 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-2">
+            <span class="text-2xl">✨</span>
+            <span class="text-rose-600 font-bold tracking-wide uppercase text-sm">Shagun's Day!</span>
+        </div>
+        <!-- Sound Toggle -->
+        <button id="sound-btn" onclick="toggleSound()"
+            class="bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-md text-xl hover:scale-110 active:scale-95 transition-transform">
+            🔊
+        </button>
+    </header>
+
+    <!-- MAIN GAME SCREEN CONTAINER -->
+    <main class="flex-grow w-full max-w-md mx-auto px-4 flex flex-col justify-center items-center z-10 relative pb-8">
+
+        <!-- ================= WELCOME SCREEN ================= -->
+        <div id="screen-welcome" class="w-full text-center space-y-6">
+            <div class="relative inline-block floating">
+                <!-- Golden Crown / Tiara over heart -->
+                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 text-4xl">👑</div>
+                <!-- Heart / Chapati/ Golgappa graphic wrapper -->
+                <div
+                    class="w-32 h-32 bg-amber-100 rounded-full flex items-center justify-center mx-auto border-4 border-amber-300 shadow-lg relative">
+                    <!-- Heart -->
+                    <span class="text-6xl">💝</span>
+                    <!-- Miniature chapati/golgappa orbiting icons -->
+                    <div class="absolute -bottom-1 -right-1 bg-white p-2 rounded-full shadow-md text-xl">🥞</div>
+                    <div class="absolute top-2 -left-2 bg-white p-2 rounded-full shadow-md text-xl">🟢</div>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">
+                    Happy Birthday, <br>
+                    <span
+                        class="text-rose-500 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-amber-500">Shagun!</span>
+                    🌟
+                </h1>
+                <p class="text-sm text-gray-500 uppercase tracking-widest font-semibold">The Ultimate Special Quest</p>
+            </div>
+
+            <div class="bg-white/75 backdrop-blur-md rounded-2xl p-5 shadow-xl border border-rose-100/50 space-y-3">
+                <p class="text-gray-700 leading-relaxed text-sm">
+                    Welcome to a special game crafted just for you! Our super kind-hearted, sweet, emotional, and
+                    wonderful <strong class="text-amber-600">Chapati Friend</strong> who cannot live without <strong
+                        class="text-green-600">Golgappas</strong>! 😋
+                </p>
+                <div class="text-xs text-rose-400 font-medium italic">
+                    "Made with absolute love & lots of spicy water!"
+                </div>
+            </div>
+
+            <button onclick="changeScreen('screen-lvl1-intro')"
+                class="w-full glow-btn bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition active:scale-95 text-lg">
+                Enter Shagun's World ✨
+            </button>
+        </div>
+
+
+        <!-- ================= LEVEL 1: INTRO ================= -->
+        <div id="screen-lvl1-intro" class="w-full hidden text-center space-y-6">
+            <div class="text-5xl floating">🥞💖</div>
+            <div class="space-y-2">
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Level
+                    1</span>
+                <h2 class="text-2xl font-bold text-gray-800">The Fluffy Chapati Catch!</h2>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto">
+                Shagun, you are our precious "Chapati Friend"—warm, comforting, and always bringing people together!
+                <br><br>
+                Catch the falling <strong>Fluffy Chapatis</strong> and glowing <strong>Kindness Hearts</strong> on your
+                plate! Avoid the burnt ones!
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 text-left space-y-1">
+                <p>🎯 <strong>Goal:</strong> Reach 100 points to unlock Level 2!</p>
+                <p>⭐ <strong>Chapatis/Hearts:</strong> +10 points</p>
+                <p>🔥 <strong>Burnt Chapatis:</strong> -15 points</p>
+            </div>
+            <button onclick="startLevel1()"
+                class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition active:scale-95">
+                Start Cooking! 🧑‍🍳
+            </button>
+        </div>
+
+
+        <!-- ================= LEVEL 1: GAMEPLAY ================= -->
+        <div id="screen-lvl1-game"
+            class="w-full hidden flex flex-col justify-between h-[450px] relative bg-amber-50/40 rounded-2xl border-2 border-amber-200 overflow-hidden shadow-inner">
+            <!-- Score overlay -->
+            <div class="absolute top-2 left-2 right-2 flex justify-between items-center px-2 z-20 pointer-events-none">
+                <div
+                    class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow text-sm font-semibold text-gray-700">
+                    Score: <span id="lvl1-score" class="text-rose-500 font-bold">0</span>/100
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow text-xs text-amber-700">
+                    Level 1: Chapati Catch
+                </div>
+            </div>
+
+            <!-- Game Area Container -->
+            <div id="game-catcher-area"
+                class="w-full h-full relative overflow-hidden bg-gradient-to-b from-amber-50/30 to-amber-100/50">
+                <!-- Falling items will be dynamically generated here -->
+
+                <!-- Catcher Basket (Plate) -->
+                <div id="catcher-basket"
+                    class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-20 h-8 bg-amber-800/80 rounded-b-xl border-t-4 border-amber-300 flex items-center justify-center shadow-md transition-all duration-75 touch-none">
+                    <!-- Cute plate rim and text inside -->
+                    <span class="text-white text-[10px] font-bold tracking-widest uppercase">SHAGUN</span>
+                    <div class="absolute -top-1 w-16 h-1 bg-white/40 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div class="w-full bg-amber-100/80 p-3 border-t border-amber-200 flex justify-between gap-4 z-20">
+                <button id="btn-move-left"
+                    class="flex-1 bg-amber-500 active:bg-amber-600 text-white text-xl py-3 rounded-xl shadow active:scale-95 transition-transform select-none">
+                    ⬅️ Left
+                </button>
+                <button id="btn-move-right"
+                    class="flex-1 bg-amber-500 active:bg-amber-600 text-white text-xl py-3 rounded-xl shadow active:scale-95 transition-transform select-none">
+                    Right ➡️
+                </button>
+            </div>
+        </div>
+
+
+        <!-- ================= LEVEL 2: INTRO ================= -->
+        <div id="screen-lvl2-intro" class="w-full hidden text-center space-y-6">
+            <div class="text-5xl floating">🟢💦🤤</div>
+            <div class="space-y-2">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Level
+                    2</span>
+                <h2 class="text-2xl font-bold text-gray-800">The Golgappa Pop-O-Rama!</h2>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto">
+                No birthday is complete without your greatest love—<strong>Golgappas!</strong> <br><br>
+                Crispy round shells are floating up! Tap them quickly to fill them with spicy <strong>Teekha
+                    Pani</strong> and sweet <strong>Meetha Tamarind</strong> water before they pop!
+            </p>
+            <div
+                class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-800 text-left space-y-1">
+                <p>🎯 <strong>Goal:</strong> Devour/Tap 15 Golgappas!</p>
+                <p>⚠️ <strong>Watch out:</strong> Don't let them float away unfilled!</p>
+            </div>
+            <button onclick="startLevel2()"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition active:scale-95">
+                Bring on the Pani Puri! 🤤
+            </button>
+        </div>
+
+
+        <!-- ================= LEVEL 2: GAMEPLAY ================= -->
+        <div id="screen-lvl2-game"
+            class="w-full hidden flex flex-col justify-between h-[450px] relative bg-emerald-50/40 rounded-2xl border-2 border-emerald-200 overflow-hidden shadow-inner">
+            <!-- Score & Instructions overlay -->
+            <div class="absolute top-2 left-2 right-2 flex justify-between items-center px-2 z-20 pointer-events-none">
+                <div
+                    class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow text-sm font-semibold text-gray-700">
+                    Eaten: <span id="lvl2-score" class="text-emerald-600 font-bold">0</span>/15
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow text-xs text-emerald-700">
+                    Tap to eat!
+                </div>
+            </div>
+
+            <!-- Game Area for floating Golgappas -->
+            <div id="game-golgappa-area"
+                class="w-full h-full relative overflow-hidden bg-gradient-to-b from-emerald-50/30 to-emerald-100/30">
+                <!-- Golgappas float from bottom to top here -->
+            </div>
+        </div>
+
+
+        <!-- ================= LEVEL 3: INTRO ================= -->
+        <div id="screen-lvl3-intro" class="w-full hidden text-center space-y-6">
+            <div class="text-5xl floating">🍯💖✨</div>
+            <div class="space-y-2">
+                <span class="bg-rose-100 text-rose-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Level
+                    3</span>
+                <h2 class="text-2xl font-bold text-gray-800">The Kindness Jar</h2>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto">
+                Shagun, you are incredibly kind-hearted, caring, and deeply emotional. You feel things so beautifully.
+                <br><br>
+                For this level, we want to fill your empty heart jar with lovely truths and warm wishes. Tap the glowing
+                magic hearts to fill the jar and read what makes you so special!
+            </p>
+            <button onclick="startLevel3()"
+                class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition active:scale-95">
+                Open my Heart Jar 💞
+            </button>
+        </div>
+
+
+        <!-- ================= LEVEL 3: GAMEPLAY ================= -->
+        <div id="screen-lvl3-game"
+            class="w-full hidden flex flex-col justify-between items-center min-h-[420px] space-y-4">
+
+            <!-- Message Display Box (changes with each heart tapped) -->
+            <div
+                class="w-full min-h-[100px] bg-white/90 backdrop-blur-sm border-2 border-rose-200 rounded-2xl p-4 shadow-md flex items-center justify-center text-center relative">
+                <div id="jar-instruction" class="text-rose-500 font-semibold animate-pulse text-sm">
+                    💖 Tap floating hearts to send love into the Jar!
+                </div>
+                <div id="jar-wish-text"
+                    class="hidden text-gray-700 font-medium text-sm leading-relaxed handwritten text-lg">
+                    <!-- Wish text will render dynamically -->
+                </div>
+            </div>
+
+            <!-- The Jar Graphic -->
+            <div class="relative w-48 h-60 flex items-end justify-center">
+                <!-- The actual jar SVG -->
+                <svg class="absolute inset-0 w-full h-full drop-shadow-lg" viewBox="0 0 100 120" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <!-- Jar outline glass effect -->
+                    <path
+                        d="M30 10 C30 10, 35 15, 35 22 L35 25 C35 25, 20 35, 20 60 C20 85, 25 105, 50 105 C75 105, 80 85, 80 60 C80 35, 65 25, 65 25 L65 22 C65 15, 70 10, 70 10 Z"
+                        fill="rgba(255,255,255,0.3)" stroke="#fda4af" stroke-width="2" />
+                    <!-- Jar lid -->
+                    <rect x="33" y="4" width="34" height="6" rx="2" fill="#fda4af" />
+                </svg>
+
+                <!-- Jar filling effect (liquid or hearts rising) -->
+                <div id="jar-filler"
+                    class="w-36 h-0 bg-gradient-to-t from-rose-300/60 to-rose-400/80 rounded-b-[40px] rounded-t-lg transition-all duration-1000 ease-out z-0 mb-[6px]"
+                    style="border-radius: 30% 30% 40% 40%;"></div>
+
+                <!-- Floating mini hearts inside the jar -->
+                <div id="jar-inner-hearts" class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <!-- Hearts generated dynamically inside jar -->
+                </div>
+            </div>
+
+            <!-- Score / Progress -->
+            <div class="text-xs text-rose-500 font-semibold uppercase tracking-wider">
+                Hearts Captured: <span id="lvl3-count">0</span> / 5
+            </div>
+
+            <!-- Outer floating hearts waiting to be clicked -->
+            <div id="jar-outer-hearts-container" class="relative w-full h-16 overflow-hidden">
+                <!-- Target hearts float horizontally here -->
+            </div>
+        </div>
+
+
+        <!-- ================= GRAND FINALE: INTRO ================= -->
+        <div id="screen-finale-intro" class="w-full hidden text-center space-y-6">
+            <div class="text-6xl animate-bounce">🎂🎉✨</div>
+            <div class="space-y-2">
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase">The Final
+                    Step</span>
+                <h2 class="text-3xl font-extrabold text-gray-800">You Did It, Shagun!</h2>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto">
+                You've successfully gathered your warmth, filled your tummy with delicious golgappas, and loaded your
+                heart with sweetest wishes! <br><br>
+                Now, it's time to celebrate. Your virtual birthday cake is ready!
+            </p>
+            <button onclick="goToFinale()"
+                class="w-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 text-white font-bold py-4 rounded-xl shadow-xl transform transition active:scale-95 text-lg">
+                Blow the Candles! 🕯️✨
+            </button>
+        </div>
+
+
+        <!-- ================= GRAND FINALE: THE CAKE & WISHES ================= -->
+        <div id="screen-finale-cake" class="w-full hidden text-center space-y-6">
+
+            <h2 class="text-3xl font-extrabold text-rose-500 handwritten">Blow the candle, Shagun!</h2>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Click the candle to extinguish it and make a wish
+            </p>
+
+            <!-- Interactive Virtual Cake -->
+            <div id="cake-container"
+                class="relative w-64 h-64 mx-auto flex flex-col items-center justify-end cursor-pointer"
+                onclick="blowCandle()">
+
+                <!-- Floating Sparks from Candle -->
+                <div id="flame-sparkles" class="absolute top-6 text-xl animate-pulse">✨</div>
+
+                <!-- Candle Flame -->
+                <div id="candle-flame"
+                    class="w-4 h-8 bg-gradient-to-t from-red-500 via-orange-400 to-yellow-200 rounded-full animate-bounce filter drop-shadow-[0_0_8px_rgba(251,146,60,0.8)] mb-1">
+                </div>
+
+                <!-- Candle Stick -->
+                <div id="candle-stick"
+                    class="w-2 h-14 bg-gradient-to-r from-blue-400 to-blue-200 rounded-t-sm shadow-md mb-0"></div>
+
+                <!-- Cake Layers -->
+                <!-- Top Layer -->
+                <div
+                    class="w-36 h-12 bg-pink-100 rounded-t-xl border-b-2 border-rose-200 relative flex items-center justify-center shadow-md">
+                    <!-- Cream drips -->
+                    <div class="absolute -bottom-2 left-0 right-0 flex justify-around">
+                        <div class="w-4 h-4 bg-pink-100 rounded-full"></div>
+                        <div class="w-4 h-5 bg-pink-100 rounded-full"></div>
+                        <div class="w-3 h-3 bg-pink-100 rounded-full"></div>
+                        <div class="w-4 h-4 bg-pink-100 rounded-full"></div>
+                        <div class="w-3 h-5 bg-pink-100 rounded-full"></div>
+                    </div>
+                    <!-- Toppings -->
+                    <div class="flex space-x-1 -mt-2">
+                        <span>🍓</span><span>🍒</span><span>🍓</span>
+                    </div>
+                </div>
+
+                <!-- Middle Layer -->
+                <div
+                    class="w-48 h-12 bg-amber-100 border-b-2 border-amber-200 relative flex items-center justify-center shadow-md">
+                    <div class="absolute -bottom-2 left-0 right-0 flex justify-around">
+                        <div class="w-5 h-4 bg-amber-100 rounded-full"></div>
+                        <div class="w-3 h-5 bg-amber-100 rounded-full"></div>
+                        <div class="w-5 h-3 bg-amber-100 rounded-full"></div>
+                    </div>
+                    <div class="text-[10px] text-amber-800 font-bold tracking-widest uppercase">✨ SPECIALLY FOR YOU ✨
+                    </div>
+                </div>
+
+                <!-- Bottom Layer -->
+                <div class="w-56 h-14 bg-rose-200 rounded-b-lg relative flex items-center justify-center shadow-md">
+                    <span class="text-white text-lg font-bold uppercase tracking-wider">HBD SHAGUN</span>
+                </div>
+
+                <!-- Cake Plate -->
+                <div class="w-64 h-3 bg-slate-300 rounded-full shadow-lg"></div>
+            </div>
+
+            <!-- The Secret Emotional Letter Drawer (Unlocks when candle blown) -->
+            <div id="letter-drawer"
+                class="hidden transform scale-95 opacity-0 transition-all duration-1000 ease-out bg-white p-6 rounded-2xl shadow-2xl border-t-4 border-rose-500 text-left space-y-4">
+                <div class="flex items-center space-x-2 border-b pb-2 border-rose-100">
+                    <span class="text-2xl">💌</span>
+                    <h3 class="font-bold text-gray-800 text-lg">A Special Message for Shagun</h3>
+                </div>
+
+                <div class="text-sm text-gray-700 leading-relaxed space-y-3 handwritten text-lg">
+                    <p>Dearest Shagun,</p>
+                    <p>
+                        Happy Birthday to our favorite, absolute sweetest <strong class="text-amber-600">Chapati
+                            Friend</strong>! Your presence makes our lives so warm, soft, and wholesome—just like a
+                        fresh, fluffy chapati directly off the stove.
+                    </p>
+                    <p>
+                        We know how <strong class="text-rose-500">emotional and kind-hearted</strong> you are. You
+                        always care so deeply for everyone, feeling every emotion to the fullest, and lighting up our
+                        dark days with your pure empathy. Never lose that magical heart of yours.
+                    </p>
+                    <p>
+                        And don't slap me again pleaseeee. Because I am smart in the whole world.
+                    </p>
+                    <p>
+                        May this year bring you mountains of crispy, perfectly spiced <strong
+                            class="text-emerald-600">Golgappas</strong>, gallons of sweet-spicy water, infinite rounds
+                        of laughter, and all the love that you so generously shower upon others.
+                    </p>
+                    <p class="text-right font-bold text-rose-500 text-xl">- Your Friend Aniket ❤️</p>
+                </div>
+
+                <div class="pt-2 text-center">
+                    <button onclick="restartGame()"
+                        class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 py-2 px-4 rounded-full transition active:scale-95">
+                        🔄 Play Quest Again
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Custom Modal for Alerts (replacing native browser alerts) -->
+    <div id="custom-modal"
+        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl border border-rose-100 transform scale-95 transition-all duration-300">
+            <div id="modal-icon" class="text-5xl">🎉</div>
+            <h4 id="modal-title" class="text-xl font-bold text-gray-800">Title</h4>
+            <p id="modal-text" class="text-gray-600 text-sm leading-relaxed">Text body goes here</p>
+            <button id="modal-btn"
+                class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 rounded-xl transition shadow-lg active:scale-95">
+                Continue
+            </button>
+        </div>
+    </div>
+
+    <!-- Web Audio & Core Game Engine JavaScript -->
+    <script>
+        // --- Sound Engine (Synthesized sounds using Web Audio API) ---
+        let audioCtx = null;
+        let soundEnabled = true;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const soundBtn = document.getElementById('sound-btn');
+            soundBtn.innerHTML = soundEnabled ? '🔊' : '🔇';
+            initAudio();
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'pop') { // Golgappa Pop
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.1);
+            } else if (type === 'catch') { // Chapati Caught
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.15);
+            } else if (type === 'burn') { // Burnt chapati hit
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                osc.frequency.linearRampToValueAtTime(60, audioCtx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.2);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.2);
+            } else if (type === 'chime') { // Wish unlocked
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.4);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.4);
+            } else if (type === 'fanfare') { // Level completion
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(330, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(392, audioCtx.currentTime + 0.1);
+                osc.frequency.setValueAtTime(523, audioCtx.currentTime + 0.2);
+                osc.frequency.setValueAtTime(659, audioCtx.currentTime + 0.3);
+                gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.6);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.6);
+            }
+        }
+
+        // --- Confetti Generation Engine ---
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confettiArray = [];
+        let animationFrameId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.size = Math.random() * 8 + 5;
+                this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                this.speed = Math.random() * 4 + 2;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spinSpeed = Math.random() * 0.1 - 0.05;
+            }
+            update() {
+                this.y += this.speed;
+                this.angle += this.spinSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function spawnConfetti(amount = 100) {
+            confettiArray = [];
+            for (let i = 0; i < amount; i++) {
+                confettiArray.push(new Confetti());
+            }
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettiArray.forEach(c => {
+                c.update();
+                c.draw();
+            });
+            animationFrameId = requestAnimationFrame(animateConfetti);
+        }
+
+        function stopConfetti() {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        // --- Custom Alert Modals ---
+        function showModal(title, text, buttonText, icon, callback) {
+            const modal = document.getElementById('custom-modal');
+            const mTitle = document.getElementById('modal-title');
+            const mText = document.getElementById('modal-text');
+            const mBtn = document.getElementById('modal-btn');
+            const mIcon = document.getElementById('modal-icon');
+
+            mTitle.innerText = title;
+            mText.innerHTML = text;
+            mBtn.innerText = buttonText;
+            mIcon.innerText = icon;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('scale-95');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 50);
+
+            mBtn.onclick = function () {
+                modal.firstElementChild.classList.remove('scale-100');
+                modal.firstElementChild.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    if (callback) callback();
+                }, 150);
+            };
+        }
+
+
+        // --- Navigation Controller ---
+        function changeScreen(screenId) {
+            const screens = [
+                'screen-welcome', 'screen-lvl1-intro', 'screen-lvl1-game',
+                'screen-lvl2-intro', 'screen-lvl2-game', 'screen-lvl3-intro',
+                'screen-lvl3-game', 'screen-finale-intro', 'screen-finale-cake'
+            ];
+            screens.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) element.classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+            initAudio();
+        }
+
+
+        // ================= LEVEL 1 CODE (CHAPATI CATCHER) =================
+        let lvl1Score = 0;
+        let lvl1Active = false;
+        let catcherX = 50; // percentage
+        let fallingItems = [];
+        let catcherInterval = null;
+        let itemSpawnInterval = null;
+
+        function startLevel1() {
+            changeScreen('screen-lvl1-game');
+            lvl1Score = 0;
+            document.getElementById('lvl1-score').innerText = lvl1Score;
+            lvl1Active = true;
+            fallingItems = [];
+            catcherX = 50;
+            updateCatcherPosition();
+
+            // Setup controls
+            setupCatcherControls();
+
+            // Game Loops
+            itemSpawnInterval = setInterval(spawnFallingItem, 1000);
+            catcherInterval = setInterval(updateFallingItems, 20);
+        }
+
+        function updateCatcherPosition() {
+            const basket = document.getElementById('catcher-basket');
+            basket.style.left = `${catcherX}%`;
+        }
+
+        function setupCatcherControls() {
+            const leftBtn = document.getElementById('btn-move-left');
+            const rightBtn = document.getElementById('btn-move-right');
+
+            // Click/Touch handlers
+            leftBtn.onmousedown = leftBtn.ontouchstart = (e) => {
+                e.preventDefault();
+                moveCatcher(-8);
+            };
+            rightBtn.onmousedown = rightBtn.ontouchstart = (e) => {
+                e.preventDefault();
+                moveCatcher(8);
+            };
+
+            // Keyboard support
+            document.onkeydown = (e) => {
+                if (!lvl1Active) return;
+                if (e.key === 'ArrowLeft') moveCatcher(-6);
+                if (e.key === 'ArrowRight') moveCatcher(6);
+            };
+        }
+
+        function moveCatcher(amount) {
+            catcherX += amount;
+            if (catcherX < 10) catcherX = 10;
+            if (catcherX > 90) catcherX = 90;
+            updateCatcherPosition();
+        }
+
+        function spawnFallingItem() {
+            if (!lvl1Active) return;
+            const area = document.getElementById('game-catcher-area');
+            const item = document.createElement('div');
+            item.className = 'absolute text-2xl transition-all duration-75 select-none pointer-events-none';
+
+            // Item Types: Normal Chapati, Kind Heart, Burnt Chapati
+            const rand = Math.random();
+            let type = 'chapati';
+            if (rand < 0.4) {
+                type = 'heart';
+                item.innerHTML = '💖';
+            } else if (rand < 0.7) {
+                type = 'burnt';
+                item.innerHTML = '🌑'; // Burnt round thing
+            } else {
+                item.innerHTML = '🥞'; // Sweet looking chapati/pancake
+            }
+
+            const xPos = Math.random() * 80 + 10; // percentage
+            item.style.left = `${xPos}%`;
+            item.style.top = '-20px';
+            area.appendChild(item);
+
+            fallingItems.push({
+                element: item,
+                x: xPos,
+                y: -20,
+                type: type,
+                speed: Math.random() * 2 + 2
+            });
+        }
+
+        function updateFallingItems() {
+            if (!lvl1Active) return;
+            const area = document.getElementById('game-catcher-area');
+            const areaHeight = area.clientHeight;
+
+            for (let i = fallingItems.length - 1; i >= 0; i--) {
+                const item = fallingItems[i];
+                item.y += item.speed;
+                item.element.style.top = `${item.y}px`;
+
+                // Collision Check with Plate
+                // Plate is roughly at y = areaHeight - 48px to areaHeight - 16px
+                if (item.y >= areaHeight - 60 && item.y <= areaHeight - 20) {
+                    const diff = Math.abs(item.x - catcherX);
+                    if (diff < 12) { // Caught!
+                        item.element.remove();
+                        fallingItems.splice(i, 1);
+                        handleCatch(item.type);
+                        continue;
+                    }
+                }
+
+                // Missed / Out of bounds
+                if (item.y > areaHeight) {
+                    item.element.remove();
+                    fallingItems.splice(i, 1);
+                }
+            }
+        }
+
+        function handleCatch(type) {
+            if (type === 'chapati') {
+                lvl1Score += 10;
+                playSound('catch');
+            } else if (type === 'heart') {
+                lvl1Score += 15;
+                playSound('catch');
+                showCatchEffect('💖');
+            } else if (type === 'burnt') {
+                lvl1Score -= 15;
+                if (lvl1Score < 0) lvl1Score = 0;
+                playSound('burn');
+                showCatchEffect('💥');
+            }
+
+            document.getElementById('lvl1-score').innerText = lvl1Score;
+
+            if (lvl1Score >= 100) {
+                completeLevel1();
+            }
+        }
+
+        function showCatchEffect(emoji) {
+            const basket = document.getElementById('catcher-basket');
+            const effect = document.createElement('div');
+            effect.className = 'absolute -top-10 text-xl font-bold animate-ping';
+            effect.innerText = emoji;
+            basket.appendChild(effect);
+            setTimeout(() => effect.remove(), 600);
+        }
+
+        function completeLevel1() {
+            lvl1Active = false;
+            clearInterval(catcherInterval);
+            clearInterval(itemSpawnInterval);
+
+            // Clean up left-over elements
+            fallingItems.forEach(item => item.element.remove());
+            fallingItems = [];
+
+            playSound('fanfare');
+            spawnConfetti(50);
+            setTimeout(() => stopConfetti(), 3000);
+
+            showModal(
+                "Chapati Master! 🥞",
+                "Fantastic job, Shagun! You caught all those perfect warm chapatis and filled everyone's hearts. You reached 100+ points!<br><br>Now let's head to your absolute favorite delicacy...",
+                "Next Level ➡️",
+                "😋",
+                () => changeScreen('screen-lvl2-intro')
+            );
+        }
+
+
+        // ================= LEVEL 2 CODE (GOLGAPPA POP) =================
+        let lvl2Score = 0;
+        let lvl2Active = false;
+        let golgappas = [];
+        let golgappaSpawnInterval = null;
+        let golgappaMoveInterval = null;
+
+        function startLevel2() {
+            changeScreen('screen-lvl2-game');
+            lvl2Score = 0;
+            document.getElementById('lvl2-score').innerText = lvl2Score;
+            lvl2Active = true;
+            golgappas = [];
+
+            golgappaSpawnInterval = setInterval(spawnGolgappa, 1100);
+            golgappaMoveInterval = setInterval(updateGolgappas, 25);
+        }
+
+        function spawnGolgappa() {
+            if (!lvl2Active) return;
+            const area = document.getElementById('game-golgappa-area');
+            const golgappa = document.createElement('div');
+            golgappa.className = 'absolute w-14 h-14 bg-gradient-to-tr from-amber-400 to-yellow-200 rounded-full flex items-center justify-center border border-amber-500 shadow-md cursor-pointer select-none transition-transform active:scale-90 hover:brightness-110';
+
+            // Inner hollow detailing
+            golgappa.innerHTML = `
+                <div class="w-10 h-10 border border-dashed border-amber-600/30 rounded-full flex items-center justify-center relative">
+                    <span class="text-xs font-bold text-amber-900/60">G</span>
+                </div>
+            `;
+
+            const xPos = Math.random() * 75 + 5; // percentage
+            golgappa.style.left = `${xPos}%`;
+            golgappa.style.bottom = '-60px';
+            area.appendChild(golgappa);
+
+            const itemObj = {
+                element: golgappa,
+                x: xPos,
+                y: -60, // bottom offset
+                speed: Math.random() * 1.5 + 1.5,
+                filled: false
+            };
+
+            // Tapping/Clicking Golgappa fills and devours it
+            golgappa.onclick = golgappa.ontouchstart = (e) => {
+                e.preventDefault();
+                if (!itemObj.filled) {
+                    fillGolgappa(itemObj);
+                }
+            };
+
+            golgappas.push(itemObj);
+        }
+
+        function fillGolgappa(item) {
+            item.filled = true;
+            playSound('pop');
+
+            // Visual feedback of filled and eaten
+            item.element.classList.remove('from-amber-400', 'to-yellow-200');
+            // Make it green for tasty spicy water (Teekha pani)
+            item.element.classList.add('from-emerald-500', 'to-emerald-300', 'border-emerald-600');
+            item.element.innerHTML = `<span class="text-xl">💦🤤</span>`;
+
+            // Score addition
+            lvl2Score++;
+            document.getElementById('lvl2-score').innerText = lvl2Score;
+
+            // Sparkle effect
+            createSparkler(item.element);
+
+            // Poof and disappear shortly after filling
+            setTimeout(() => {
+                item.element.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    item.element.remove();
+                    const index = golgappas.indexOf(item);
+                    if (index > -1) golgappas.splice(index, 1);
+                }, 200);
+            }, 300);
+
+            if (lvl2Score >= 15) {
+                completeLevel2();
+            }
+        }
+
+        function createSparkler(parent) {
+            const effect = document.createElement('div');
+            effect.className = 'absolute inset-0 bg-white/50 rounded-full sparkler pointer-events-none';
+            parent.appendChild(effect);
+        }
+
+        function updateGolgappas() {
+            if (!lvl2Active) return;
+            const area = document.getElementById('game-golgappa-area');
+            const areaHeight = area.clientHeight;
+
+            for (let i = golgappas.length - 1; i >= 0; i--) {
+                const item = golgappas[i];
+                item.y += item.speed;
+                item.element.style.bottom = `${item.y}px`;
+
+                // If floating beyond screen and not eaten
+                if (item.y > areaHeight + 80) {
+                    item.element.remove();
+                    golgappas.splice(i, 1);
+                }
+            }
+        }
+
+        function completeLevel2() {
+            lvl2Active = false;
+            clearInterval(golgappaSpawnInterval);
+            clearInterval(golgappaMoveInterval);
+
+            golgappas.forEach(item => item.element.remove());
+            golgappas = [];
+
+            playSound('fanfare');
+            spawnConfetti(50);
+            setTimeout(() => stopConfetti(), 3000);
+
+            showModal(
+                "YUMMY! 😋",
+                "Shagun, you ate 15 golden, crispy, water-filled golgappas perfectly! No spicy teardrops can stop you!<br><br>Now let's proceed to something deeper. Something dedicated to your beautiful, emotional heart.",
+                "Fill the Kindness Jar ❤️",
+                "🌟",
+                () => changeScreen('screen-lvl3-intro')
+            );
+        }
+
+
+        // ================= LEVEL 3 CODE (THE KINDNESS JAR) =================
+        let lvl3Score = 0;
+        let lvl3Active = false;
+        let jarInterval = null;
+
+        const kindnessWishes = [
+            "✨ Shagun, your heart is purer than gold. You always listen so selflessly to everyone's problems.",
+            "🧸 You are the most emotional soul, and that's your superpower! You feel every detail with genuine love.",
+            "🥞 To our sweetest Chapati friend: you are warm, soft, and bring safety and smiles wherever you go!",
+            "🌸 Your kindness shines so brightly. You literally have the power to turn anyone's bad day into a happy one.",
+            "🎂 Happy Birthday Shagun! We are so unbelievably blessed to have a beautiful soul like you in our lives!"
+        ];
+
+        function startLevel3() {
+            changeScreen('screen-lvl3-game');
+            lvl3Score = 0;
+            document.getElementById('lvl3-count').innerText = lvl3Score;
+            lvl3Active = true;
+
+            // Reset Jar UI
+            document.getElementById('jar-filler').style.height = '0%';
+            document.getElementById('jar-instruction').classList.remove('hidden');
+            document.getElementById('jar-wish-text').classList.add('hidden');
+            document.getElementById('jar-inner-hearts').innerHTML = '';
+            document.getElementById('jar-outer-hearts-container').innerHTML = '';
+
+            // Start spawning floating hearts
+            jarInterval = setInterval(spawnOuterHeart, 1500);
+            // Spawn first immediately
+            spawnOuterHeart();
+        }
+
+        function spawnOuterHeart() {
+            if (!lvl3Active) return;
+            const container = document.getElementById('jar-outer-hearts-container');
+            const heart = document.createElement('button');
+            heart.className = 'absolute bottom-2 text-3xl cursor-pointer hover:scale-125 transition-transform animate-bounce select-none focus:outline-none';
+            heart.innerHTML = '💖';
+
+            const startLeft = Math.random() * 80 + 5;
+            heart.style.left = `${startLeft}%`;
+            container.appendChild(heart);
+
+            // Tapping the heart moves it into the jar!
+            heart.onclick = heart.ontouchstart = (e) => {
+                e.preventDefault();
+                heart.remove();
+                sendHeartToJar();
+            };
+
+            // Remove after 6 seconds if untapped
+            setTimeout(() => {
+                if (heart.parentNode === container) heart.remove();
+            }, 6000);
+        }
+
+        function sendHeartToJar() {
+            if (!lvl3Active) return;
+
+            // Sound FX
+            playSound('chime');
+
+            // Add inner heart to the jar visual
+            const innerJar = document.getElementById('jar-inner-hearts');
+            const miniHeart = document.createElement('span');
+            miniHeart.className = 'absolute text-rose-500 text-lg transition-all duration-[1500ms] ease-out select-none';
+            miniHeart.innerHTML = '❤️';
+
+            // Random position inside the jar boundaries
+            const targetLeft = Math.random() * 60 + 20; // safe space
+            const targetBottom = Math.random() * 40 + 10;
+            miniHeart.style.left = `${targetLeft}%`;
+            miniHeart.style.bottom = '-20px';
+            innerJar.appendChild(miniHeart);
+
+            // Animate it rising up inside jar
+            setTimeout(() => {
+                miniHeart.style.bottom = `${targetBottom}%`;
+            }, 50);
+
+            // Increment Score
+            lvl3Score++;
+            if (lvl3Score > 5) lvl3Score = 5;
+            document.getElementById('lvl3-count').innerText = lvl3Score;
+
+            // Fill Jar percentage
+            const fillHeight = (lvl3Score / 5) * 85; // Max 85% full
+            document.getElementById('jar-filler').style.height = `${fillHeight}%`;
+
+            // Display Kindness Message
+            const instruction = document.getElementById('jar-instruction');
+            const wishText = document.getElementById('jar-wish-text');
+
+            instruction.classList.add('hidden');
+            wishText.classList.remove('hidden');
+            wishText.innerHTML = kindnessWishes[lvl3Score - 1];
+
+            // If game complete
+            if (lvl3Score >= 5) {
+                setTimeout(completeLevel3, 4000);
+            }
+        }
+
+        function completeLevel3() {
+            lvl3Active = false;
+            clearInterval(jarInterval);
+
+            playSound('fanfare');
+            spawnConfetti(70);
+            setTimeout(() => stopConfetti(), 4000);
+
+            showModal(
+                "Jar of Love Full! 🍯❤️",
+                "Your heart jar is completely full of gratitude and love, Shagun! We hope these beautiful facts remind you how magical you are.<br><br>Now, your friends are waiting. Let's head to your big birthday celebration!",
+                "To the Celebration! 🎂",
+                "🎉",
+                () => changeScreen('screen-finale-intro')
+            );
+        }
+
+
+        // ================= GRAND FINALE CODE =================
+        let candleBlown = false;
+
+        function goToFinale() {
+            changeScreen('screen-finale-cake');
+            candleBlown = false;
+            document.getElementById('candle-flame').classList.remove('hidden');
+            document.getElementById('flame-sparkles').classList.remove('hidden');
+            document.getElementById('letter-drawer').classList.add('hidden');
+            document.getElementById('letter-drawer').style.opacity = '0';
+            document.getElementById('letter-drawer').style.transform = 'scale(0.95)';
+        }
+
+        function blowCandle() {
+            if (candleBlown) return;
+            candleBlown = true;
+
+            // Blow sound + Success fan fare
+            playSound('pop');
+            setTimeout(() => {
+                playSound('fanfare');
+            }, 200);
+
+            // Hide flame
+            document.getElementById('candle-flame').classList.add('hidden');
+            document.getElementById('flame-sparkles').classList.add('hidden');
+
+            // Unleash Confetti Celebration
+            spawnConfetti(150);
+
+            // Reveal Secret Letter
+            const drawer = document.getElementById('letter-drawer');
+            drawer.classList.remove('hidden');
+            setTimeout(() => {
+                drawer.style.opacity = '1';
+                drawer.style.transform = 'scale(1)';
+                // Scroll down smoothly to show the message on mobile
+                drawer.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+
+        function restartGame() {
+            stopConfetti();
+            changeScreen('screen-welcome');
+        }
+
+    </script>
+</body>
+
+</html>
